@@ -1,0 +1,34 @@
+<?php  
+session_start();
+$conn = mysqli_connect('localhost','root','','bloome_database');
+
+if (isset($_POST['logoff'])) {
+
+	$ref = $_POST['ref'] ;
+	$tme = $_POST['timeout'] ; 
+
+	$query = "INSERT INTO bloume_tbl(reference_ID,employee_timeout) VALUES('$ref','$tme')";
+
+	$query_run = mysqli_query($conn,$query);
+
+	if ($query_run) {
+		?>
+		<script type="text/javascript">
+        alert("Timeout successfuly, logging out...");
+        window.location = "Bloome CTSITe login.php";
+           </script>
+<?php
+		} else {
+	?>
+		<script type="text/javascript">
+        alert1("There is a problem!!");
+        window.location = "Bloomemployee.php";
+    </script>
+	}
+	<?php
+}
+
+}
+
+
+?>

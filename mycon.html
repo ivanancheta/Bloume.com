@@ -1,0 +1,36 @@
+<?php  
+session_start();
+$conn = mysqli_connect('localhost','root','','bloome_database');
+
+if (isset($_POST['submit'])) {
+
+	$ref = $_POST['ref'] ;
+	$tme = $_POST['time'] ; 
+	$name = $_POST['name'] ;
+	$work = $_POST['work'] ;
+
+	$query = "INSERT INTO bloume_table(reference_ID,employee_timein,employee_name,employee_deployment) VALUES('$ref','$tme','$name','$work')";
+
+	$query_run = mysqli_query($conn,$query);
+
+	if ($query_run) {
+		?>
+		<script type="text/javascript">
+        alert("Your BLOUMe Data is timed-in!!");
+        window.location = "Bloomemployee.php";
+           </script>
+<?php
+		} else {
+	?>
+		<script type="text/javascript">
+        alert1("Please refrain from unaccomplishing filling-up on the form!!");
+        window.location = "Bloomemployee.php";
+    </script>
+	}
+	<?php
+}
+
+}
+
+
+?>

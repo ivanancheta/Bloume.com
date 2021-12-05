@@ -1,0 +1,36 @@
+<?php
+ 
+include 'connection.php';
+
+$bloumedel = "DELETE FROM bloume_table where employee_ID = '".$_GET['employee_ID']."'";
+
+$connection = $con->query($bloumedel);
+
+if ($connection = 1) {
+    ?>
+    <script type="text/javascript">
+        alert("BLOUMe Account is eradicated!!");
+        window.location = "Bloomemployee.php";
+
+    </script>
+
+
+<?php
+
+}else{
+
+    ?>
+
+    <script type="text/javascript">
+        alert("BLOUMe Account wasn't sucessfuly delete!!");
+        window.location = "Bloomemployee.php";
+
+    </script>
+
+<?php
+
+}
+
+
+
+ ?>

@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>BLOUMe Salary.</title>
+</head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<body>
+
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		
+		<ul class="navbar-nav mr-auto">
+			<img class="im" style="width: 8%; height: 8%;" src="log.gif">
+			<h3> BLOUMe CTSITe. <p class="hjk"> Comunications Tech. Company </p></h3>
+
+		</ul>
+
+			<img class="lg" style="width: 1.4%;" src="return.png"> <a href="Bloomemployee.php" class="log" style="color:#E7E7E7" onclick="loff"> Back </a>
+
+	</nav>
+
+	<br>
+	<br>
+	<br>
+
+	<div class="brd">
+
+	<div class="hjl">
+
+	<tr>
+		<p class="g">BLOUMe Salary.</p> <p class="fre"> Php
+	<span id="total"></span>
+
+	 </p>
+	 <input type="button" onClick="pay()" Value="Expenses" class="btn btn-primary"> 
+	</tr>
+	<br>
+
+	<table>
+		
+
+	<div>
+	<label class="tin"> Your Timein: </label><br>
+	<input type="time" id="timein" class="mh" required min="08:00" max="18:00"> </div> <br> <div> <label class="kin"> Your Timeout: </label><br>
+	<input type="time" id="timeout" class="kh" required min="08:00" max="18:00"> </div> <br>
+
+	</table>
+
+	<input type="button" onClick="check()" Value="Calculate" class="btn btn-secondary">  <button class="btn btn-warning" id="clear1">Reset</button>
+	<br>
+	<div class="group">
+	<p class="z">Details:</p> <p class="grt"> 
+	<span id="notif"></span>
+	</div>
+	</div>
+
+	<hr>
+
+
+	<p class="pad">Note: please use this payroll system for your whole day of work day and afternoon please be advice. </p>
+	</div>
+
+	<script type="text/javascript">
+		function check() {
+			var y=document.getElementById("timein").value;
+			var x=document.getElementById("timeout").value;
+			var half = 580
+			var whole = 860
+
+			if (y=="08:00" && x=="12:00") {
+				document.getElementById("total").innerHTML= half + ".00." + " " + "(Tentative salary)";	
+			}
+			else if (y=="09:00" && x=="12:00") {
+				document.getElementById("total").innerHTML= half - 52 + ".00." + " " + "(Tentative salary)";
+				document.getElementById("notif").innerHTML= "You are late 1 hour, your salary has deducted once!!";
+			}
+			else if (y=="10:00" && x=="12:00") {
+				document.getElementById("total").innerHTML= half - 62 + ".00." + " " + "(Tentative salary)";
+				document.getElementById("notif").innerHTML= "You are late 2 hour, your salary has deducted twice!!";
+			}
+			else if (y=="11:00" && x=="12:00") {
+				document.getElementById("total").innerHTML= half - 72 + ".00." + " " + "(Tentative salary)";
+				document.getElementById("notif").innerHTML= "You are super late 3 hours, your salary has deducted tripple!!";
+			}
+			else if (y=="12:00" && x=="12:00") {
+				document.getElementById("notif").innerHTML= "Your salary for half day was not calculated or even counted!!";
+				alert("No half day salary!! please be aware of time schedule, Thank you.")
+			}
+			else if (y=="13:00" && x=="17:00") {
+				document.getElementById("total").innerHTML= half + ".00." + " " + "(Tentative salary)";
+			}
+			else if (y=="14:00" && x=="17:00") {
+				document.getElementById("total").innerHTML= half - 52 + ".00." + " " + "(Tentative salary)";
+				document.getElementById("notif").innerHTML= "You are late 1 hour, your salary has deducted once!!";
+			}
+			else if (y=="15:00" && x=="17:00") {
+				document.getElementById("total").innerHTML= half - 62 + ".00." + " " + "(Tentative salary)";
+				document.getElementById("notif").innerHTML= "You are late 2 hour, your salary has deducted twice!!";
+			}
+			else if (y=="16:00" && x=="17:00") {
+				document.getElementById("total").innerHTML= half - 72 + ".00." + " " + "(Tentative salary)";
+				document.getElementById("notif").innerHTML= "You are super late 3 hours, your salary has deducted tripple!!";
+			}
+			else if (y=="17:00" && x=="17:00") {
+				document.getElementById("notif").innerHTML= "You're absent for this day, please be aware!!";
+				alert("You don't have a salary for to day, thank you.")
+			}
+			else if (y=="08:00" && x=="17:00") {
+				document.getElementById("total").innerHTML= whole + ".00." + " " + "(Tentative salary)";
+			}
+			else if (y=="08:00" && x=="09:00") {
+				document.getElementById("notif").innerHTML= "You're absent for this day, please be aware!!";
+				alert("You don't have a salary for to day, thank you.")
+			}
+			else if (y=="08:00" && x=="10:00") {
+				document.getElementById("total").innerHTML= half - 62 + ".00." + " " + "(Tentative salary)";
+				document.getElementById("notif").innerHTML= "You are late 1 hour and cut work at 10 am, your salary has deducted twice!!";
+			}
+			else if (y=="08:00" && x=="11:00") {
+				document.getElementById("total").innerHTML= half - 52 + ".00." + " " + "(Tentative salary)";
+				document.getElementById("notif").innerHTML= "You cut your work at 11 am, your salary has deducted once!!";
+			}
+			else if (y=="09:00" && x=="10:00") {
+				document.getElementById("notif").innerHTML= "You're absent for this day, please be aware!!";
+				alert("You don't have a salary for to day, thank you.")
+			}
+			else if (y=="09:00" && x=="11:00") {
+				document.getElementById("total").innerHTML= half - 62 + ".00." + " " + "(Tentative salary)";
+				document.getElementById("notif").innerHTML= "You are late 1 hour and cut work at 11 am, your salary has deducted twice!!";
+			}
+			else if (y=="10:00" && x=="11:00") {
+				document.getElementById("notif").innerHTML= "You're absent for this day, please be aware!!";
+				alert("You don't have a salary for to day, thank you.")
+			}
+			else if (y=="10:00" && x=="12:00") {
+				document.getElementById("total").innerHTML= half - 62 + ".00." + " " + "(Tentative salary)";
+				document.getElementById("notif").innerHTML= "You are late 2 hour, your salary has deducted twice!!";
+			}
+			else if (y=="11:00" && x=="12:00") {
+				document.getElementById("notif").innerHTML= "You're absent for this day, please be aware!!";
+				alert("You don't have a salary for to day, thank you.")
+			}
+			else if (y=="09:00" && x=="12:00") {
+				document.getElementById("total").innerHTML= half - 52 + ".00." + " " + "(Tentative salary)";
+				document.getElementById("notif").innerHTML= "You are late 1 hour, your salary has deducted once!!";
+			}
+			else if (y=="13:00" && x=="14:00") {
+				document.getElementById("notif").innerHTML= "You're absent for this day, please be aware!!";
+				alert("You don't have a salary for to day, thank you.")
+			}
+			else if (y=="13:00" && x=="15:00") {
+				document.getElementById("total").innerHTML= half - 62 + ".00." + " " + "(Tentative salary)";
+				document.getElementById("notif").innerHTML= "You cut your work at 3 pm, your salary has deducted twice!!";
+			}
+			else if (y=="13:00" && x=="16:00") {
+				document.getElementById("total").innerHTML= half - 52 + ".00." + " " + "(Tentative salary)";
+				document.getElementById("notif").innerHTML= "You cut your work at 4 pm, your salary has deducted once!!";
+			}
+			else if (y=="14:00" && x=="15:00") {
+				document.getElementById("notif").innerHTML= "You're absent for this day, please be aware!!";
+				alert("You don't have a salary for to day, thank you.")
+			}
+			else if (y=="14:00" && x=="16:00") {
+				document.getElementById("total").innerHTML= half - 62 + ".00." + " " + "(Tentative salary)";
+				document.getElementById("notif").innerHTML= "You are late 1 hour and cut your work at 4 pm, your salary has deducted twice!!";
+			}
+			else if (y=="14:00" && x=="17:00") {
+				document.getElementById("total").innerHTML= half - 52 + ".00." + " " + "(Tentative salary)";
+				document.getElementById("notif").innerHTML= "You are late 1 hour, your salary has deducted once!!";
+			}
+			else if (y=="15:00" && x=="16:00") {
+				document.getElementById("notif").innerHTML= "You're absent for this day, please be aware!!";
+				alert("You don't have a salary for to day, thank you.")
+			}
+			else if (y=="15:00" && x=="17:00") {
+				document.getElementById("total").innerHTML= half - 62 + ".00." + " " + "(Tentative salary)";
+				document.getElementById("notif").innerHTML= "You are late 2 hour, your salary has deducted twice!!";
+			}
+			else if (y=="08:00" && x=="13:00") {
+				document.getElementById("total").innerHTML= whole - 268 + ".00." + " " + "(Tentative salary)";
+				document.getElementById("notif").innerHTML= "You cut your work at 1 pm, your salary has deducted quadrouple!!";
+			}
+			else if (y=="08:00" && x=="14:00") {
+				document.getElementById("total").innerHTML= whole - 184 + ".00." + " " + "(Tentative salary)";
+				document.getElementById("notif").innerHTML= "You cut your work at 2 pm, your salary has deducted tripple!!";
+			}
+			else if (y=="08:00" && x=="15:00") {
+				document.getElementById("total").innerHTML= whole - 114 + ".00." + " " + "(Tentative salary)";
+				document.getElementById("notif").innerHTML= "You cut your work at 3 pm, your salary has deducted twice!!";
+			}
+			else if (y=="08:00" && x=="16:00") {
+				document.getElementById("total").innerHTML= whole - 52 + ".00." + " " + "(Tentative salary)";
+				document.getElementById("notif").innerHTML= "You cut your work at 4 pm, your salary has deducted twice!!";
+			}
+			else if (y=="09:00" && x=="13:00") {
+				document.getElementById("total").innerHTML= whole - 360 + ".00." + " " + "(Tentative salary)";
+				document.getElementById("notif").innerHTML= "You are late 1 hour and cut work at 1 pm, your salary has deducted 5 times!!";
+			}
+			else if (y=="09:00" && x=="14:00") {
+				document.getElementById("total").innerHTML= whole - 268 + ".00." + " " + "(Tentative salary)";
+				document.getElementById("notif").innerHTML= "You are late 1 hour and cut work at 2 pm, your salary has deducted quadrouple!!";
+			}
+			else if (y=="09:00" && x=="15:00") {
+				document.getElementById("total").innerHTML= whole - 186 + ".00." + " " + "(Tentative salary)";
+				document.getElementById("notif").innerHTML= "You are late 1 hour and cut work at 3 pm, your salary has deducted tripple!!";
+			}
+			else if (y=="09:00" && x=="16:00") {
+				document.getElementById("total").innerHTML= whole - 114 + ".00." + " " + "(Tentative salary)";
+				document.getElementById("notif").innerHTML= "You are late 1 hour and cut work at 4 pm, your salary has deducted twice!!";
+			}
+			else if (y=="09:00" && x=="17:00") {
+				document.getElementById("total").innerHTML= whole - 52 + ".00." + " " + "(Tentative salary)";
+				document.getElementById("notif").innerHTML= "You are late 1 hour, your salary has deducted once!!";
+			}
+			else if (y=="10:00" && x=="13:00") {
+				document.getElementById("total").innerHTML= whole - 462 + ".00." + " " + "(Tentative salary)";
+				document.getElementById("notif").innerHTML= "You are late 2 hour and cut work at 1 pm, your salary has deducted 6 times!!";
+			}
+			else if (y=="10:00" && x=="14:00") {
+				document.getElementById("total").innerHTML= whole - 360 + ".00." + " " + "(Tentative salary)";
+				document.getElementById("notif").innerHTML= "You are late 2 hour and cut work at 2 pm, your salary has deducted 5 times!!";
+			}
+			else if (y=="10:00" && x=="15:00") {
+				document.getElementById("total").innerHTML= whole - 268 + ".00." + " " + "(Tentative salary)";
+				document.getElementById("notif").innerHTML= "You are late 2 hour and cut work at 3 pm, your salary has deducted quadrouple!!";
+			}
+			else if (y=="10:00" && x=="16:00") {
+				document.getElementById("total").innerHTML= whole - 186 + ".00." + " " + "(Tentative salary)";
+				document.getElementById("notif").innerHTML= "You are late 2 hour and cut work at 3 pm, your salary has deducted tripple!!";
+			}
+			else if (y=="10:00" && x=="17:00") {
+				document.getElementById("total").innerHTML= whole - 114 + ".00." + " " + "(Tentative salary)";
+				document.getElementById("notif").innerHTML= "You are late 2 hour and cut work at 3 pm, your salary has deducted twice!";
+			}
+			else if (y=="11:00" && x=="13:00") {
+				document.getElementById("total").innerHTML= whole - 574 + ".00." + " " + "(Tentative salary)";
+				document.getElementById("notif").innerHTML= "You are late 3 hour and cut work at 1 pm, your salary has deducted 7 times!";
+			}
+			else if (y=="11:00" && x=="14:00") {
+				document.getElementById("total").innerHTML= whole - 462 + ".00." + " " + "(Tentative salary)";
+				document.getElementById("notif").innerHTML= "You are late 3 hour and cut work at 2 pm, your salary has deducted 6 times!";
+			}
+			else if (y=="11:00" && x=="15:00") {
+				document.getElementById("total").innerHTML= whole - 360 + ".00." + " " + "(Tentative salary)";
+				document.getElementById("notif").innerHTML= "You are late 3 hour and cut work at 3 pm, your salary has deducted 5 times!";
+			}
+			else if (y=="11:00" && x=="16:00") {
+				document.getElementById("total").innerHTML= whole - 268 + ".00." + " " + "(Tentative salary)";
+				document.getElementById("notif").innerHTML= "You are late 3 hour and cut work at 4 pm, your salary has deducted 4 times!";
+			}
+			else if (y=="11:00" && x=="17:00") {
+				document.getElementById("total").innerHTML= whole - 186 + ".00." + " " + "(Tentative salary)";
+				document.getElementById("notif").innerHTML= "You are late 3 hour, your salary has deducted 3 times!";
+			}
+			else if (y=="12:00" && x=="13:00") {
+				document.getElementById("total").innerHTML= ".00." + " " + "(Tentative salary)";
+				document.getElementById("notif").innerHTML= "You are super late 4 hour and cut work at 1 pm, you're considered absent!";
+			}
+			else if (y=="12:00" && x=="14:00") {
+				document.getElementById("total").innerHTML= whole - 574 + ".00." + " " + "(Tentative salary)";
+				document.getElementById("notif").innerHTML= "You are super late 4 hour and cut work at 2 pm, your salary has deducted 7 times!";
+			}
+			else if (y=="12:00" && x=="15:00") {
+				document.getElementById("total").innerHTML= whole - 462 + ".00." + " " + "(Tentative salary)";
+				document.getElementById("notif").innerHTML= "You are super late 4 hour and cut work at 3 pm, your salary has deducted 6 times!";
+			}
+			else if (y=="12:00" && x=="16:00") {
+				document.getElementById("total").innerHTML= whole - 360 + ".00." + " " + "(Tentative salary)";
+				document.getElementById("notif").innerHTML= "You are super late 4 hour and cut work at 4 pm, your salary has deducted 5 times!";
+			}
+			else if (y=="12:00" && x=="17:00") {
+				document.getElementById("total").innerHTML= whole - 268 + ".00." + " " + "(Tentative salary)";
+				document.getElementById("notif").innerHTML= "You are super late 4 hour and cut work at 4 pm, your salary has deducted 5 times!";
+			}
+			else {
+				document.getElementById("notif").innerHTML= "Probably your timein or timeout wasn't in the minimum or maximum work sched time!!";
+				document.getElementById("total").innerHTML= ".00." + " " + "(Tentative salary)";
+			}
+		}
+
+		function pay() {
+
+			window.alert("Please specify here your another taxes...")
+			var userPreference;
+			var q = Number(prompt("Withholding Tax:"));
+			var w = Number(prompt("Social Security System:"));
+			var e = Number(prompt("Sales Tax:"));
+			var a = Number(prompt("Philhealth:"));
+			var b = Number(prompt("Pagibig:"));
+
+		if (confirm("Specify your deduction.") == true) {
+			var c = Number(prompt("Tentative salary:"))
+				document.getElementById("total").innerHTML= q + w + e + a + b - c;
+				userPreference = "Your salary has been deducted succesfully including withholding tax 20%, SSS 10.4% and sales tax 12%, Thank you.";	
+		} else {
+			userPreference = "Cancelled.";
+		}
+
+		document.getElementById("notif").innerHTML = userPreference; 
+		}
+	</script>
+
+	<script>
+    window.addEventListener('load', () => {
+        const button = document.querySelector('#clear' && '#clear1');
+        button.addEventListener('click', () => {
+            document.querySelector('#timein').value = "";
+            document.querySelector('#timeout').value = "";
+        });
+    }); 
+   </script>
+
+</body>
+</html>
+
+<style type="text/css">
+
+	body {
+        background-image: url(bnm6.jpg);
+    }
+
+    .pad {
+    	text-align: center;
+    	font-size: 12px;
+    	margin-top: 1%;
+    	font-weight: bold;
+    }
+
+.g {
+	font-weight: bold;
+	text-align: center;
+	margin-left: 40%;
+	border-radius: 125px;
+	font-weight: bold;
+	font-size: 20px;
+}
+
+.z {
+	font-weight: bold;
+	margin-left: 1%;
+	padding-top: 4px;
+	border-radius: 125px;
+	font-size: 15px;
+}
+	
+.sdf {
+	margin-top: 5%;
+	margin-right: 15%;
+	margin-left: 15%;
+}
+
+.t {
+	text-align: center;
+}
+
+
+.im {
+	margin-top: 5px;
+	margin-bottom: 5px;
+	margin-left: 5px;
+}
+
+h3 {
+	color: ghostwhite;
+	margin-top: 1.4%;
+	margin-left: 1%;
+	font-size: 32px;
+}
+
+.log {
+	margin-right: 2%;
+	font-weight: bolder;
+}
+
+
+.f {
+	background-color: lightgrey;
+}
+
+.lg {
+	margin-right: 5px;
+}
+
+.j {
+	background-color: #F7F7F7;
+}
+
+.l {
+	text-align: center;
+}
+
+.w {
+	text-align: center;
+	font-weight: bolder;
+	font-size: 19px;
+	background-color: #E8EBED;
+}
+
+.v {
+	text-align: center;
+}
+
+.btn-warning {
+	border-radius: 7px;
+	font-weight: bold;
+	margin-top: 2%;
+}
+
+.btn-secondary {
+	border-radius: 8px;
+	margin-top: 2%;
+	padding-left: 12%;
+	padding-right: 12%;
+	margin-left: 30%;
+	font-weight: bold;
+}
+
+.ed {
+	text-align: center;
+}
+
+.fre {
+	padding-top: 2%;
+	padding-bottom: 2%;
+	border-radius: 20px;
+	padding-left: 30px;
+	font-size: 38px;
+	text-align: left;
+	font-weight: bold;
+	background-color: #E1E1E1;
+	font-family: digital-7;
+	margin-left: 19%;
+	margin-right: 19%;
+}
+
+.b {
+	padding-right: 5px;
+}
+
+.hjk {
+	font-size: 15px;
+} 
+
+.mh{
+	margin-left: 30%;
+	border-radius: 5px;
+	padding-left: 14%;
+	padding-right: 14%;
+}
+
+.kh {
+	margin-left: 30%;
+	border-radius: 5px;
+	padding-left: 14%;
+	padding-right: 14%;
+}
+
+.tin {
+	font-weight: bold;
+	margin-left: 30%;
+}
+
+.kin {
+	font-weight: bold;
+	margin-left: 30%;
+}
+
+.btn-danger {
+	border-radius: 7px;
+}
+
+.btn-primary {
+	padding-left: 4%;
+	padding-right: 4%;
+	margin-left: 64%;
+	font-size: 14px;
+	font-weight: bold;
+	border-radius: 20px;
+}
+
+.grt {
+	text-align: center;
+}
+
+.group {
+	background-color: #F7F7F7;
+	margin-left: 6%;
+	margin-right: 6%;
+	margin-top: 15px;
+	padding-bottom: 7%;
+	border-radius: 15px;
+}
+
+.hjl {
+
+}
+
+.brd {
+	padding-top: 1%;
+	margin-left: 28%;
+	margin-right: 28%;
+	padding-bottom: 2%;
+	border-radius: 20px;
+	background-color: #EDEDED;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+</style>

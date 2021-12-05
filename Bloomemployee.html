@@ -1,0 +1,302 @@
+<?php 
+include "connection.php";
+session_start();
+
+?>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>BLOUMe Webpage.</title>
+</head>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<body>
+
+	<form action="bloumelogout.php" method="post">
+
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		
+		<ul class="navbar-nav mr-auto">
+			<img class="im" style="width: 8%; height: 8%;" src="log.gif">
+			<h3> BLOUMe CTSITe. <p class="hjk"> Comunications Tech. Company </p></h3>
+		</ul>
+	
+	 <button type="submit" id="btn1" name="logoff" name="submit" class="btn btn-light">Logout</button>
+
+	</nav>
+
+	<table class="v">
+	<tr>
+	<td><label class="nm">BLOUMe ID:</label> <input type="text" id="ref" name="ref" maxlength="100" minlength="0" class="gh" required> <br></td>
+	<td><label class="tm">Timeout:</label> <input type="datetime-local" id="timeout" name="timeout" maxlength="100" minlength="0" class="cl" required> <br></td>
+	</tr>
+	</table>
+	<br>
+	<br>
+	<br>	
+
+</form>
+
+	<form class="sdf">
+		<table class="table table-bordered">
+
+			<tr class="o">
+			<a class="btn btn-secondary" href="userdeduc.php?">DEDUCTION EQUIVALENT</a>
+
+			<label class="acc">Admin.</label>
+		</tr>
+
+		<table class="table table-bordered">
+			
+			<tr class="f">
+			<th class="v">ID</th>
+			<th>TIMED-IN</th>
+			<th>EMPLOYEE</th>
+			<th>WORK</th>
+		</tr>
+
+	<?php  
+	$SELECT = "SELECT * FROM bloume_table";
+	$connection = $con->query($SELECT);
+	if ($connection -> num_rows > 0) {
+		while ($rows = $connection->fetch_assoc()) {
+	?>
+		<tr class="j">
+			<td class="w"><?php echo $rows ['reference_ID']; ?></td>
+			<td class="t"><?php echo $rows ['employee_timein']; ?></td>
+			<td><?php echo $rows ['employee_name']; ?></td>
+			<td class="b"><?php echo $rows ['employee_deployment']; ?></td>
+	<?php  
+
+
+	}
+
+
+	}
+
+	?>
+	<table><hr>
+	<label class="nl">Logouts.</label></table>
+
+	<table class="table table-bordered table-hover">
+		<tr class="lk">
+			<th class="v">ID</th>
+			<th>TIME-OUT</th>
+		</tr>
+
+	<?php  
+	$SELECT = "SELECT * FROM bloume_tbl";
+	$connection = $con->query($SELECT);
+	if ($connection -> num_rows > 0) {
+		while ($rows = $connection->fetch_assoc()) {
+	?>
+		<tr class="lk">
+			<td class="w"><?php echo $rows ['reference_ID']; ?></td>
+			<td class="t"><?php echo $rows ['employee_timeout']; ?></td>
+	<?php  
+
+
+	}
+
+
+	}
+
+	?>
+
+		
+	</tr>
+
+		</table>	
+		</table>
+			<hr>
+		</form>
+
+		<script>
+	document.getElementById('demo').innerHTML = Date();
+		</script>
+
+		<br>
+		<br>
+		<br>
+		<br>
+
+</body>
+</html>
+
+<style type="text/css">
+
+	body {
+        background-image: url(bnm6.jpg);
+    }
+	
+.sdf {
+	margin-top: 1%;
+	margin-right: 15%;
+	margin-left: 15%;
+}
+
+.im {
+	margin-top: 5px;
+	margin-bottom: 5px;
+	margin-left: 5px;
+}
+
+h3 {
+	color: ghostwhite;
+	margin-top: 1.4%;
+	margin-left: 1%;
+	font-size: 32px;
+}
+
+.t {
+	text-align: center;
+	background-color: #F7F7F7;
+}
+
+.log {
+	margin-right: 2%;
+	font-weight: bolder;
+}
+
+
+.f {
+	background-color: lightgrey;
+}
+
+.lg {
+	margin-right: 5px;
+}
+
+.j {
+	background-color: #F7F7F7;
+}
+
+.l {
+	text-align: center;
+}
+
+.w {
+	text-align: center;
+	font-weight: bolder;
+	font-size: 19px;
+	background-color: #E8EBED;
+}
+
+.v {
+	text-align: center;
+}
+
+.btn-warning {
+	font-weight: bolder;
+}
+
+.acc {
+	margin-left: 63%;
+	padding-left: 2%;
+	padding-right: 2%;
+	border-radius: 125px;
+	font-weight: bold;
+	font-size: 25px;
+	background-color: #CFD6DA;
+}
+
+.btn-secondary {
+	border-radius: 8px;
+	padding-left: 5.5%;
+	padding-right: 5.5%;
+	margin-right: 5px;
+	font-weight: bold;
+}
+
+.btn-dark {
+	border-radius: 8px;
+	padding-left: 5.5%;
+	padding-right: 5.5%;
+	margin-right: 5px;
+}
+
+.ed {
+	text-align: center;
+}
+
+label {
+	margin-left: 2%;
+	font-weight: 100;
+	font-weight: bold;
+}
+
+.asd {
+	margin-left: 2%;
+	margin-right: 70%;
+	text-align: center;
+	font-weight: 100;
+	padding-left: 2%;
+	padding-right: 2%;
+	font-weight: 650;
+	background-color: #F8F7EF;
+	border-radius: 20px;
+}
+
+.hjk {
+	font-size: 15px;
+}
+
+.nm {
+	margin-left: 1%;
+	margin-right: 4%;
+}
+
+.btn-light {
+	float: right;
+	margin-right:1%;
+	margin-top: 5px;
+	font-size: 14px;
+	border-radius: 20px;
+	text-align: center;
+	font-weight: bold;
+}
+
+.gh {
+	margin-left: 30%;
+	border-radius: 5px;
+}
+
+.tm {
+	margin-left: 1%;
+	margin-right: 62%;
+}
+
+.cl {
+	margin-left: 5%;
+	padding-left: 2.1%;
+	padding-right: 2.1%;
+	border-radius: 5px;
+	text-align: center;
+	font-weight: bold;
+}
+
+.v {
+	margin-left: 70%;
+}
+
+.lk {
+	background-color: lightgrey;
+}
+
+.nl {
+	color: #424B4C;
+}
+
+.navbar-light {
+	padding-top: 5%;
+}
+
+.table-bordered {
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+</style>

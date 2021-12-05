@@ -1,0 +1,36 @@
+<?php 
+
+include 'connection.php';
+
+$deleteapex = "DELETE FROM signintable where list_id = '".$_GET['list_id']."'";
+
+$connection = $con->query($deleteapex);
+
+if ($connection = 1) {
+    ?>
+    <script type="text/javascript">
+        alert("Your Apex Account is Deleted successfully!!");
+        window.location = "apexaccounthome.php";
+
+    </script>
+
+
+<?php
+
+}else{
+
+    ?>
+
+    <script type="text/javascript">
+        alert("Your account was not successfully deleted!!");
+        window.location = "apexaccounthome.php";
+
+    </script>
+
+<?php
+
+}
+
+
+
+ ?>
